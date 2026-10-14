@@ -29,7 +29,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 
-const val API_KEY = ""
+val API_KEY: String = BuildConfig.WEATHER_API_KEY
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

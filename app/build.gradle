@@ -3,6 +3,10 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+def weatherApiKey = providers.gradleProperty('WEATHER_API_KEY')
+        .orElse(providers.environmentVariable('WEATHER_API_KEY'))
+        .getOrElse('')
+
 android {
     namespace 'com.alox1d.weatherapp'
     compileSdk 32
@@ -13,6 +17,7 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
+        buildConfigField "String", "WEATHER_API_KEY", groovy.json.JsonOutput.toJson(weatherApiKey)
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
